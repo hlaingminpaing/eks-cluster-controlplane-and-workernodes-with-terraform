@@ -50,6 +50,11 @@ resource "aws_eks_node_group" "main" {
   }
 
   instance_types = var.instance_types
+  
+  # Ensure nodes can communicate with the control plane privately
+  remote_access {
+    ec2_ssh_key = null  # Optional: Add an SSH key if needed
+  }
 
   depends_on = [
     aws_iam_role_policy_attachment.node_group_worker,

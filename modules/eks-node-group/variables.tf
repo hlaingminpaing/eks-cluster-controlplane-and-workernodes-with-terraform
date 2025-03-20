@@ -1,8 +1,8 @@
 variable "cluster_name" {
   description = "Name of the EKS cluster"
   type        = string
+  default     = "uat-eks-cluster"
 }
-
 variable "subnet_ids" {
   description = "List of subnet IDs for the node group"
   type        = list(string)
@@ -35,5 +35,9 @@ variable "instance_types" {
 variable "tags" {
   description = "A map of tags to apply to all resources"
   type        = map(string)
-  default     = {}
+  default = {
+    environment = "UAT"
+    project     = "MyEKS"
+    owner       = "Hello-World"
+  }
 }
